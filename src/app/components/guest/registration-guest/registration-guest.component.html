@@ -1,0 +1,106 @@
+<div class="card mx-auto form-container container mt-5" style="width: 45rem;">
+
+    <h2 class="text-center">Guest SignUp</h2>
+    <!-- Display success message -->
+    <div *ngIf="registrationSuccess" class="alert alert-success text-center" role="alert">
+        Registration successful! Please <a routerLink="/GuestLogin">log in</a>.
+    </div>
+    <form id="registrationform" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="guestName">Name:</label>
+            <input type="text" id="guestName" name="guestName" class="form-control" formControlName="guestName" required>
+            <div *ngIf="hasError('guestName', 'required')" class="invalid-feedback">Name is required.</div>
+            <div *ngIf="hasError('guestName', 'maxlength')" class="invalid-feedback">Name should not exceed 50
+                characters.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="guestAge">Age:</label>
+            <input type="number" id="guestAge" name="guestAge" class="form-control" formControlName="guestAge" required [min]="18">
+            <div *ngIf="hasError('guestAge', 'required')" class="invalid-feedback">Age is required.</div>
+            <div *ngIf="hasError('guestAge', 'min')" class="invalid-feedback">Age should be at least 18.</div>
+            <div *ngIf="hasError('guestAge', 'max')" class="invalid-feedback">Age should not exceed 80.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="guestEmail">Email:</label>
+            <input type="email" id="guestEmail" name="guestEmail" class="form-control" formControlName="guestEmail" required>
+            <div *ngIf="hasError('guestEmail', 'required')" class="invalid-feedback">Email is required.</div>
+            <div *ngIf="hasError('guestEmail', 'email')" class="invalid-feedback">Invalid email format.</div>
+            <div *ngIf="hasError('guestEmail', 'emailTaken')" class="invalid-feedback">Email is already registered!
+                Please Login to Continue.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="guestContactNo">Contact Number:</label>
+            <input type="text" id="guestContactNo" name="guestContactNo" class="form-control" formControlName="guestContactNo" required>
+            <div *ngIf="hasError('guestContactNo', 'required')" class="invalid-feedback">Contact number is required.</div>
+            <div *ngIf="hasError('guestContactNo', 'pattern')" class="invalid-feedback">Contact number should only contain
+                digits.</div>
+            <div *ngIf="hasError('guestContactNo', 'minlength')" class="invalid-feedback">Contact number is
+                invalid...please Provide min 10 digits.</div>
+            <div *ngIf="hasError('guestContactNo', 'maxlength')" class="invalid-feedback">Contact number should not exceed
+                10 characters.</div>
+            <div *ngIf="hasError('guestContactNo', 'contactNumberTaken')" class="invalid-feedback">Contact number is
+                already registered! Please Login to Continue.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="guestAddress">Address:</label>
+            <textarea id="guestAddress" name="guestAddress" class="form-control" formControlName="guestAddress" required></textarea>
+            <div *ngIf="hasError('guestAddress', 'required')" class="invalid-feedback">Address is required.</div>
+            <div *ngIf="hasError('guestAddress', 'maxlength')" class="invalid-feedback">Address should not exceed
+                255 characters.</div>
+        </div>
+        <!-- Use Bootstrap grid classes to create a row and two columns -->
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Username field -->
+                <div class="form-group">
+                    <label for="guestUsername">Username:</label>
+                    <input type="text" id="guestUsername" name="guestUsername" class="form-control" formControlName="guestUsername"
+                        required>
+                    <div *ngIf="hasError('guestUsername', 'required')" class="invalid-feedback">Username is required.
+                    </div>
+                    <div *ngIf="hasError('guestUsername', 'maxlength')" class="invalid-feedback">Username should not
+                        exceed 10 characters.</div>
+                    <div *ngIf="hasError('guestUsername', 'usernameTaken')" class="invalid-feedback">Username is already
+                        taken! Please Login to Continue.</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Password field -->
+                <div class="form-group">
+                    <label for="guestPass">Password:</label>
+                    <input type="password" id="guestPass" name="guestPass" class="form-control" formControlName="guestPass"
+                        required>
+                    <div *ngIf="hasError('guestPass', 'required')" class="invalid-feedback">Password is required.</div>
+                    <div *ngIf="hasError('guestPass', 'pattern')" class="invalid-feedback">
+                        Password must meet the following criteria:
+                        <ul>
+                            <li>At least 8 characters long</li>
+                            <li>At least one uppercase letter</li>
+                            <li>At least one digit</li>
+                            <li>At least one special character (@$!%*?&)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="termsAndConditions" formControlName="termsAndConditions"
+                required>
+            <label class="form-check-label" for="termsAndConditions">I agree to the <a href="/terms"
+                    target="_blank">Terms and Conditions</a></label>
+            <div *ngIf="hasError('termsAndConditions', 'required')" class="invalid-feedback">You must agree to
+                the Terms and Conditions.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">Register</button>
+
+        <button class="btn btn-link" routerLink="/GuestLogin">Already have an account? Log in here.</button>
+    </form>
+
+</div>

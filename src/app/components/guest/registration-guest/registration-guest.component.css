@@ -1,0 +1,24 @@
+
+ /* input{
+    background-color: gray;
+    text-emphasis-color: yellow;
+ } */
+
+ .form-container {
+     background-color: rgba(255, 255, 255, 0.8);
+     /* Adjust the alpha value for background opacity */
+     padding: 20px;
+     border-radius: 10px;
+ }
+
+ .invalid-feedback {
+    display: block;
+    font-style: italic;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 8px;
+    margin-right: 50px;
+    background-color: rgba(248, 215, 218, 0.7); /* Set the desired background color with opacity */
+    color: #721c24;
+}

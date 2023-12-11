@@ -1,0 +1,41 @@
+<div class="">
+    <br><br><br>
+    <div class="container">
+        <div class="flex-container">
+            <!-- Signup form box -->
+            <div class="signup-form-box">
+
+                <form #guestForm="ngForm" (ngSubmit)="onSubmit(guestForm)">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">username</label>
+                        <input type="text" id="username" class="form-control" name="username"
+                            [(ngModel)]="username" required >                           
+                         
+                        <div *ngIf="guestForm.controls['username'].errors?.['required'] "
+                            class="error-message-required">
+                            *please enter username
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" name="password"
+                            [(ngModel)]="password" required >                           
+                         
+                        <div *ngIf="guestForm.controls['password'].errors?.['required'] "
+                            class="error-message-required">
+                            *please enter password
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                </form>
+                <a href="#" class="forgot-password">Forgot the password?</a>
+            </div>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="image-info-box">
+                <img src="assets\img\LogoPrevie.png" alt="Website Image" />
+                <p>Are you Hotel Owner Login HotelOwner.</p>
+            </div>
+        </div>
+    </div>
+</div>

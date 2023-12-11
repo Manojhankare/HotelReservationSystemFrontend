@@ -1,0 +1,65 @@
+ 
+<div class="container-fluid py-5" >
+  <div class="container w-100" id="body">
+    <div class="row">
+      <!-- Add Hotel Button -->
+      <div class="col-2" *ngIf="addButton">
+        <button class="btn btn-primary mb-3" value="Add Hotel" routerLink="/hoteladminhoteladd">Add Hotel</button>
+      </div>
+    </div>
+
+    <!-- Hotel List -->
+    <div *ngFor="let hotel of hotels">
+      <div class="card">
+        <div class="row">
+          <div class="col-8">
+            <div class="row mx-3">
+              <div class="row mt-2">
+                <p>
+                  <strong>Your hotel id:</strong> {{ hotel.hotelId }} &nbsp;&nbsp;|&nbsp;&nbsp;
+                  <strong>Status:</strong> {{ hotel.hotelStatus }} &nbsp;&nbsp;|&nbsp;&nbsp;
+                  <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp; {{ hotel.hotelCity }}
+                </p>
+              </div>
+              <div class="row px-2 mb-2">
+                <h1>{{ hotel.hotelName }}</h1>
+              </div>
+            </div>
+            <div class="row mx-3">
+              <p>{{ hotel.hotelDescription }}</p>
+            </div>
+            <div class="row px-3">
+              <ul class="list-inline mx-3">
+                <!-- Assuming hotelServices is a comma-separated string -->
+                <li *ngFor="let service of hotel.hotelServices.split(',')" class="list-inline-item mx-2">
+                  <i [class]="getServiceIcon(service)"></i>
+                </li>
+              </ul>
+            </div>
+            <div class="container">
+              <div class="row d-flex">
+                <div class="col-4 mt-3 mx-2">
+                  <button class="btn btn-primary mb-3 py-2 px-3" routerLink="/hotelAddroomlist">Add your Rooms</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <img [src]="hotel.hotelImgUrl" class="img-fluid" style="height: 315px; width: 450px;">
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <button class="btn btn-primary mb-3" id="radius" value="Update Hotel" (click)="updateHotelInformationById(hotel.hotelId)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <p>Edit Your Hotel Information...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message if Hotel Data is Not Available -->
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<br>
+ 
+<h1>Guest List</h1>
+<div class="backgrounds" *ngIf="guests && guests.length > 0">
+  <table class="table table-dark ">
+    <thead>
+      <tr>
+        <th>Guest ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Contact Number</th>
+        <th>Address</th>
+        <th>Username</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let guest of guests">
+        <td>{{ guest.guestId }}</td>
+        <td>{{ guest.guestName }}</td>
+        <td>{{ guest.guestAge }}</td>
+        <td>{{ guest.guestEmail }}</td>
+        <td>{{ guest.guestContactNo }}</td>
+        <td>{{ guest.guestAddress }}</td>
+        <td>{{ guest.guestUsername }}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>

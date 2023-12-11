@@ -1,0 +1,77 @@
+<p>hotelowner-registration works!</p>
+<!-- hotel-owner-registration.component.html -->
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 400px;background-color: rgba(148, 207, 22, 0.8);">
+      <div class="card-body">
+        <h1 class="text-center mb-4">Hotel Owner Registration Form</h1>
+         <!-- Display success message -->
+      <div *ngIf="registrationSuccess" class="alert alert-success text-center" role="alert">
+        Registration successfull! Please <a routerLink="/HotelOwnerLogin">log in</a>.
+      </div>  
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+
+          <div class="form-group">
+            <label for="ownerName">Owner Name</label>
+            <input type="text" class="form-control" id="ownerName" formControlName="ownerName">
+            <div *ngIf="hasError('ownerName', 'required')" class="invalid-feedback">Owner name is required.</div>
+            <div *ngIf="hasError('ownerName', 'maxlength')" class="invalid-feedback">Owner name should not exceed 255 characters.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="ownerEmail">Owner Email</label>
+            <input type="email" class="form-control" id="ownerEmail" formControlName="ownerEmail">
+            <div *ngIf="hasError('ownerEmail', 'required')" class="invalid-feedback">Owner email is required.</div>
+            <div *ngIf="hasError('ownerEmail', 'email')" class="invalid-feedback">Invalid email format.</div>
+            <div *ngIf="hasError('ownerEmail', 'maxlength')" class="invalid-feedback">Owner email should not exceed 255 characters.</div>
+            <div *ngIf="hasError('ownerEmail', 'emailTaken')" class="invalid-feedback">Email is already taken! Please Login to Continue.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="ownerContactNumber">Contact Number</label>
+            <input type="number" class="form-control" id="ownerContactNumber" formControlName="ownerContactNumber">
+            <div *ngIf="hasError('ownerContactNumber', 'required')" class="invalid-feedback">Contact number is required.</div>
+            <div *ngIf="hasError('ownerContactNumber', 'pattern')" class="invalid-feedback">Contact number should start with 7, 8, or 9 and be 10 digits.</div>
+            <div *ngIf="hasError('ownerContactNumber', 'minlength')" class="invalid-feedback">Contact number is invalid... please Provide min 10 digis.</div>
+            <div *ngIf="hasError('ownerContactNumber', 'maxlength')" class="invalid-feedback">Contact number should not exceed 10 digits.</div>
+            <div *ngIf="hasError('ownerContactNumber', 'contactNumberTaken')" class="invalid-feedback">Contact number is already taken! Please Login to Continue.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="ownerUsername">Username</label>
+            <input type="text" class="form-control" id="ownerUsername" formControlName="ownerUsername">
+            <div *ngIf="hasError('ownerUsername', 'required')" class="invalid-feedback">Username is required.</div>
+            <div *ngIf="hasError('ownerUsername', 'maxlength')" class="invalid-feedback">Username should not exceed 20 characters.</div>
+            <div *ngIf="hasError('ownerUsername', 'usernameTaken')" class="invalid-feedback">Username is already taken! Please try again or Login to Continue.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <div *ngIf="hasError('password', 'required')" class="invalid-feedback">Password is required.</div>
+            <div *ngIf="hasError('password', 'pattern')" class="invalid-feedback">Password must meet the following criteria:
+                <ul>
+                  <li>At least 8 characters long</li>
+                  <li>At least one uppercase letter</li>
+                  <li>At least one digit</li>
+                  <li>At least one special character (@$!%*?&)</li>
+                </ul>
+            </div>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="termsAndConditions" formControlName="termsAndConditions" required>
+            <label class="form-check-label" for="termsAndConditions">I agree to the <a href="/terms" target="_blank">Terms and Conditions</a></label>
+            <div *ngIf="hasError('termsAndConditions', 'required')" class="invalid-feedback">You must agree to the Terms and Conditions.</div>
+          </div>
+          
+          <button class="btn btn-primary btn-block" [disabled]="registrationForm.invalid" type="submit" >Register</button>
+
+          </form>
+  
+         <div class="text-center mt-3">
+          <button class="btn btn-link" routerLink="/HotelOwnerLogin">Already have an account? Log in here.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

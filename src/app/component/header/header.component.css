@@ -1,0 +1,6 @@
+#header {
+    height: 80px;
+    z-index: 997;
+    transition: all 0.5s;
+    background: #2d6760;
+}

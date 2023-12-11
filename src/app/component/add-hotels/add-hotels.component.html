@@ -1,0 +1,135 @@
+<div class="container-fluid py-5" style="background-image: url('../../../../assets/p1.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container mt-5 p-4 bg-light w-50 border rounded" id="box">
+        <h2 align="center">Hotel Details</h2>
+        <form #hotelForm="ngForm" (ngSubmit)="onSubmit(hotelForm)">
+            
+            <div class="mb-3 mt-3">
+                <label for="hotelName">Hotel Name:</label>
+                <input type="text" id="hotelName" class="form-control" placeholder="Enter hotel name" name="hotelName" minlength="3" [(ngModel)]="hotel.hotelName" required>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelName'].errors?.['minlength'] && hotelForm.controls['hotelName'].touched" class="error-message-minlength">
+                    *please enter at least 3 characters
+                </div>
+                <div *ngIf="hotelForm.controls['hotelName'].errors?.['required'] && hotelForm.controls['hotelName'].touched" class="error-message-required">
+                    *Hotel name cannot be null
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="hotelEmail">Hotel Email:</label>
+                <input type="email" id="hotelEmail" class="form-control" placeholder="Enter hotel email" name="hotelEmail" [(ngModel)]="hotel.hotelEmail" required>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelEmail'].errors?.['required'] && hotelForm.controls['hotelEmail'].touched" class="error-message-required">
+                    *Hotel email cannot be null
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="hotelContactNo">Contact Number:</label>
+                <input type="text" id="hotelContactNo" class="form-control" placeholder="Enter contact number" name="hotelContactNo"  [(ngModel)]="hotel.hotelContactNo" required>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelContactNo'].errors?.['pattern'] && hotelForm.controls['hotelContactNo'].touched" class="error-message-pattern">
+                    *Contact number should be 10 digits
+                </div>
+                <div *ngIf="hotelForm.controls['hotelContactNo'].errors?.['required'] && hotelForm.controls['hotelContactNo'].touched" class="error-message-required">
+                    *Contact number cannot be null
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="hotelAddress">Hotel Address:</label>
+                <input type="text" id="hotelAddress" class="form-control" placeholder="Enter hotel address" name="hotelAddress" [(ngModel)]="hotel.hotelAddress" required>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelAddress'].errors?.['required'] && hotelForm.controls['hotelAddress'].touched" class="error-message-required">
+                    *Hotel address cannot be null
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="hotelCity">City:</label>
+                <input type="text" id="hotelCity" class="form-control" placeholder="Enter city" name="hotelCity" [(ngModel)]="hotel.hotelCity" required>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelCity'].errors?.['required'] && hotelForm.controls['hotelCity'].touched" class="error-message-required">
+                    *City cannot be null
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="hotelDescription">Hotel Description:</label>
+                <textarea type="text" row="4" id="hotelDescription" class="form-control" placeholder="Enter hotel description" name="hotelDescription" maxlength="250" [(ngModel)]="hotel.hotelDescription" required style="resize: none;"></textarea>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelDescription'].errors?.['maxLength'] && hotelForm.controls['hotelDescription'].touched" class="error-message-minlength">
+                    *Hotel description cannot be more than 250 letters
+                </div>
+                <div *ngIf="hotelForm.controls['hotelDescription'].errors?.['required'] && hotelForm.controls['hotelDescription'].touched" class="error-message-required">
+                    *Hotel description cannot be null
+                </div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="hotelServices">Hotel Services:</label>
+                <input type="text" id="hotelServices" class="form-control" placeholder="Enter hotel services" name="hotelServices" [(ngModel)]="hotel.hotelServices">
+            </div>
+
+            <!-- <div class="mb-3 mt-3">
+                <label>Hotel Services:</label>
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="wifi" name="serviceWifi" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="wifi">Wifi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="food" name="serviceFood" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="food">Food</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="hotWater" name="serviceHotWater" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="hotWater">Hot Water</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ac" name="serviceAC" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="ac">AC</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="nonAC" name="serviceNonAC" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="nonAC">Non-AC</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="parking" name="serviceParking" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="parking">Parking</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gym" name="serviceGym" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="gym">Gym</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="spa" name="serviceSpa" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="spa">Spa</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pool" name="servicePool" [(ngModel)]="hotel.hotelServices">
+                    <label class="form-check-label" for="pool">Pool</label>
+                </div> -->
+                <!--some more fields as we need-->
+            <!-- </div> -->
+
+            <!-- <div class="mb-3 mt-3">
+                <label for="hotelServices">Hotel Services:</label>
+          
+              </div>
+               </div> -->
+              
+            
+
+                <div class="mb-3 mt-3">
+                <label for="hotelImgUrl">Hotel Image URL:</label>
+                <input type="text" id="hotelImgUrl" class="form-control" placeholder="Enter hotel image URL" name="hotelImgUrl" [(ngModel)]="hotel.hotelImgUrl" required>
+                <!-- For validation We use -->
+                <div *ngIf="hotelForm.controls['hotelImgUrl'].errors?.['required'] && hotelForm.controls['hotelImgUrl'].touched" class="error-message-required">
+                    *Image URL cannot be null
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

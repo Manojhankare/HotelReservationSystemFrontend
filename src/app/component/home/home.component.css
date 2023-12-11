@@ -1,0 +1,46 @@
+/* .backgrounds {
+    background-image: url('src/assets/img/gradientbackground1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  */
+  .container-fluid{
+    height: auto;
+    width: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.display-1{
+    font-style: oblique;
+}
+/* Define the button styles */
+   .responsive-button {
+    background-color: #3399ff;
+    color: #fff;
+    width: 180px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Style for the arrow icon*/
+.arrow-icon {
+  
+    top: 50%;
+    right: 10px;
+    padding: 15px;
+    transform: translateY(-50%);
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+}
+/* Show the arrow icon on hover*/
+.responsive-button:hover .arrow-icon {
+    opacity: 2;
+}
+.responsive-button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
